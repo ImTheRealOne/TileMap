@@ -9,15 +9,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	SpriteBatch batch;
 	Texture img;
 	OrthographicCamera camera;
-	TiledMapRenderer tiledMapRenderer;
+	IsometricTiledMapRenderer tiledMapRenderer;
 	TiledMap tiledMap;
 	
 	@Override
@@ -25,13 +24,14 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, w, h);
+
+
 
 		tiledMap = new TmxMapLoader().load("Test1.tmx");
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+		tiledMapRenderer = new IsometricTiledMapRenderer(tiledMap);
 		Gdx.input.setInputProcessor(this);
-
+		camera = new OrthographicCamera(w,h);
+		camera.update();
 	}
 
 	@Override
@@ -100,6 +100,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void dispose () {
+		tiledMap.dispose();
+		tiledMapRenderer.dispose();
 		batch.dispose();
 		img.dispose();
 	}
