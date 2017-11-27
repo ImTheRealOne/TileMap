@@ -8,9 +8,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
+
+import sun.rmi.runtime.Log;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 	SpriteBatch batch;
@@ -29,10 +35,22 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor {
 
 		tiledMap = new TmxMapLoader().load("Test1.tmx");
 		tiledMapRenderer = new IsometricTiledMapRenderer(tiledMap);
+		MapLayer Objectlayer = tiledMap.getLayers().get(2);
+
+
+		MapObjects objects = Objectlayer.getObjects();
+
+		MapObject object = objects.get("BlueMan");
+
+		object.setVisible(true);
 		Gdx.input.setInputProcessor(this);
 		camera = new OrthographicCamera(w,h);
 		camera.update();
+
+
 	}
+
+
 
 	@Override
 	public void render () {
