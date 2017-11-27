@@ -31,16 +31,18 @@ public class WorldRenderer implements Disposable {
         batch = new SpriteBatch();
         tiledMap = new TmxMapLoader().load("android/assets/Test1.tmx");
         tiledMapRenderer = new IsometricTiledMapRenderer(tiledMap);
+
         camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH,
                 Constants.VIEWPORT_HEIGHT);
-        camera.position.set(0,0,0);
+        camera.position.set(200,200,0);
         camera.update();
         cameraGUI = new OrthographicCamera(Constants.VIEWPORT_GUI_WIDTH,
                 Constants.VIEWPORT_GUI_HEIGHT);
         cameraGUI.position.set(0, 0, 0);
         cameraGUI.setToOrtho(true); // flip y-axis
         cameraGUI.update();
-
+        tiledMapRenderer.setView(camera);
+        tiledMapRenderer.render();
 
     }
 
@@ -64,10 +66,10 @@ public class WorldRenderer implements Disposable {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        tiledMapRenderer.setView(camera);
-        tiledMapRenderer.render();
         worldController.cameraHelper.applyTo(camera);
         batch.setProjectionMatrix(camera.combined);
+        tiledMapRenderer.setView(camera);
+        tiledMapRenderer.render();
         batch.begin();
 
         batch.end();

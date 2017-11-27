@@ -7,9 +7,9 @@ package com.mygdx.game.util;
 public class Constants {
     public static final float TIME_DELAY_GAME_OVER = 3;
 
-    public static final float VIEWPORT_WIDTH = 5.0f;
+    public static final float VIEWPORT_WIDTH = 500.0f;
 
-    public static final float VIEWPORT_HEIGHT = 5.0f;
+    public static final float VIEWPORT_HEIGHT = 500.0f;
 
 
 

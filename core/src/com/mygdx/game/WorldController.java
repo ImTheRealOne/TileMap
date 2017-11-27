@@ -79,7 +79,7 @@ public class WorldController extends InputAdapter{
 
         if (!cameraHelper.hasTarget(/*target*/)) {
             // Camera Controls (move)
-            float camMoveSpeed = 5 * deltaTime;
+            float camMoveSpeed = 100 * deltaTime;
             float camMoveSpeedAccelerationFactor = 5;
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) camMoveSpeed *=
                     camMoveSpeedAccelerationFactor;
