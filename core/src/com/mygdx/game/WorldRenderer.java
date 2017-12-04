@@ -29,6 +29,7 @@ public class WorldRenderer implements Disposable {
 
     public void init(){
         batch = new SpriteBatch();
+        //initialize tile map in level
         tiledMap = new TmxMapLoader().load("android/assets/Test1.tmx");
         tiledMapRenderer = new IsometricTiledMapRenderer(tiledMap);
 
@@ -63,15 +64,13 @@ public class WorldRenderer implements Disposable {
     }
 
     public void renderWorld(SpriteBatch batch){
-        Gdx.gl.glClearColor(1, 0, 0, 1);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         worldController.cameraHelper.applyTo(camera);
         batch.setProjectionMatrix(camera.combined);
         tiledMapRenderer.setView(camera);
-        tiledMapRenderer.render();
-        batch.begin();
 
+        batch.begin();
+        tiledMapRenderer.render();
         batch.end();
     }
 

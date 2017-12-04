@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.mygdx.game.game.objects.Level;
 import com.mygdx.game.screens.MenuScreen;
 import com.mygdx.game.util.CameraHelper;
 import com.mygdx.game.util.Constants;
@@ -17,6 +18,7 @@ public class WorldController extends InputAdapter{
     private Game game;
     public CameraHelper cameraHelper;
 
+    Level level;
 
     private static final String TAG = WorldController.class.getName();
 

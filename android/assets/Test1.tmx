@@ -110,7 +110,7 @@
 0,0,0,0,0,0,0,0,0,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="ObjLayer">
   <object id="40" name="BlueMan" gid="1" x="72.5" y="1345.5" width="102" height="100">
    <properties>
     <property name="BLOCK" value=""/>

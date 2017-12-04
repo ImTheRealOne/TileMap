@@ -18,4 +18,6 @@ public class Constants {
     // GUI Height
     public static final float VIEWPORT_GUI_HEIGHT = 480.0f;
 
+    public  static  final String level_01 = "android/assets/Test1.tmx";
+
 }
